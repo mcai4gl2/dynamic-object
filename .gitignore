@@ -1,0 +1,11 @@
+[Bb]in/
+[Oo]bj/
+TestResults/
+AppPackages/
+*.suo
+*.user
+_ReSharper.*
+*.Resharper.user
+*.resharper.user
+UnitTest-Results.xml
+packages/
