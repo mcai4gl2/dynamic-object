@@ -55,11 +55,35 @@ namespace Weblog.DynamicDomainObject.Test
             Assert.AreEqual(1, testFixture.DynamicPropertyTwo);
         }
 
+        [Test]
+        public void TestConvertType()
+        {
+            dynamic testFixture = new TypeTestFixture();
+
+            var fixtureInterface = (TestFixtureInterface)testFixture;
+            var fixtureInterface2 = (TestFixtureInterface2)testFixture;
+
+            Assert.NotNull(fixtureInterface);
+            Assert.IsNull(fixtureInterface2);
+        }
+
+        private interface TestFixtureInterface
+        {
+            
+        }
+
+        private interface TestFixtureInterface2
+        {
+            
+        }
+
+        private class TypeTestFixture : DynamicDomainObject, TestFixtureInterface
+        {
+            
+        }
 
         private class TestFixtureType
         {
-
-
         }
 
 

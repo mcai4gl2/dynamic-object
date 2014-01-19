@@ -59,6 +59,16 @@ namespace Weblog.DynamicDomainObject
                 this._type = type;
             }
 
+            public override DynamicMetaObject BindConvert(ConvertBinder binder)
+            {
+                var restrictions = BindingRestrictions.GetTypeRestriction(Expression, LimitType);
+
+                if (binder.ReturnType.IsAssignableFrom(_type))
+                    return new DynamicMetaObject(Expression.Constant(Value), restrictions);
+                else
+                    return new DynamicMetaObject(Expression.Default(binder.ReturnType), restrictions);
+            }
+
             public override DynamicMetaObject BindGetMember(GetMemberBinder binder)
             {
                 var restrictions = BindingRestrictions.GetTypeRestriction(Expression, LimitType);
